@@ -4,38 +4,293 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz App</title>
-    <link rel="stylesheet" href="quiz.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: radial-gradient(circle, #8b000065, #6c2db8);
+            text-align: center;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden; /* Prevent scrolling */
+        }
+
+        .container {
+            display: flex; /* Allow the cards to stack */
+            flex-direction: column; /* Stack cards vertically */
+            justify-content: center;
+            align-items: center;
+            height: 100%; /* Full height */
+            width: 100%; /* Full width */
+            padding: 10px; /* Padding for inner spacing */
+        }
+
+        .player-card {
+            width: 90%; /* Responsive width */
+            max-width: 300px; /* Maximum width for larger screens */
+            height: 40%; /* Fixed height to fit within the screen */
+            padding: 10px;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: 10px 0; /* Space between cards */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow: hidden;
+        }
+
+        #player2-card {
+            transform: perspective(1000px) rotate(180deg);
+        }
+
+        .player-card h3 {
+            margin: 0; /* Remove default margin */
+            font-size: 18px; /* Standard font size */
+        }
+
+        #timer {
+            font-size: 16px; /* Adjusted font size */
+            color: red;
+            margin: 10px 0;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            overflow: auto;
+        }
+
+        .options button {
+            width: 100%; /* Full width */
+            height: 40px; /* Fixed button height */
+            border-radius: 25px;
+            margin: 5px 0; /* Space between buttons */
+            font-size: 14px; /* Smaller button text */
+            background-color: #4caf50; /* Green background */
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .options button:hover {
+            background-color: #45a049; /* Darker green on hover */
+        }
+
+        #result {
+            max-width: 100%;
+        }
+
+        #restart-btn {
+            width: 100%; /* Full width for restart button */
+            height: 50px; /* Consistent button height */
+            border-radius: 25px;
+            margin-top: 20px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px; /* Adjusted font size */
+        }
+
+        #restart-btn:hover {
+            background-color: #45a049; /* Darker green on hover */
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @media (max-width: 414px) {
+            .player-card {
+                height: 40%; /* Keep height to fit within screen */
+            }
+
+            #timer {
+                font-size: 14px; /* Smaller timer font size */
+            }
+
+            .options button {
+                font-size: 12px; /* Even smaller button text */
+            }
+        }
+
+        @media (max-width: 375px) {
+            .player-card {
+                padding: 5px; /* Less padding for smaller screens */
+                height: 45%; /* Adjusted height for better fit */
+            }
+
+            .options button {
+                height: 35px; /* Slightly smaller button height */
+            }
+
+            #restart-btn {
+                height: 45px; /* Consistent button height */
+            }
+        }
+
+        @media (max-width: 320px) {
+            .player-card h3 {
+                font-size: 12px; /* Smaller score font */
+            }
+
+            .options button {
+                font-size: 10px; /* Smaller button text */
+            }
+
+            #timer {
+                font-size: 10px; /* Smaller timer font size */
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>QuizPy</h1>
-    <div class="container"></div>
+    <div class="container">
         <div class="player-card" id="player1-card">
-            <h2>Player 1</h2>
             <div id="player1-question"></div>
             <div id="timer"></div>
             <div id="player1-options" class="options"></div>
-            <button id="player1-skip-btn">Skip</button>
             <button id="player1-next-btn" class="hidden">Next Question</button>
-            <h3>Score: <span id="score1"></span></h3>
+            <h3>Score: <span id="score1">0</span></h3>
         </div>
 
         <div class="player-card" id="player2-card">
-            <h2>Player 2</h2>
             <div id="player2-question"></div>
             <div id="timer"></div>
             <div id="player2-options" class="options"></div>
-            <button id="player2-skip-btn">Skip</button>
             <button id="player2-next-btn" class="hidden">Next Question</button>
-            <h3>Score: <span id="score2"></span></h3>
+            <h3>Score: <span id="score2">0</span></h3>
         </div>
     </div>
 
     <div id="result" class="hidden">
         <h2>Results</h2>
-        <h3>Player 1 Score: <span id="final-score1"></span></h3>
-        <h3>Player 2 Score: <span id="final-score2"></span></h3>
+        <h3>Player 1 Final Score: <span id="final-score1"></span></h3>
+        <h3>Player 2 Final Score: <span id="final-score2"></span></h3>
         <button id="restart-btn">Restart Quiz</button>
     </div>
-    <script src="quiz.js"></script>
+
+    <script>
+        let questions = [];
+        let currentQuestionIndex = 0;
+        let score1 = 0;
+        let score2 = 0;
+        let timer;
+        const timePerQuestion = 10;
+
+        async function loadQuestions() {
+            try {
+                const response = await fetch('question.json');
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                questions = await response.json();
+            } catch (error) {
+                console.error('Error loading questions:', error);
+            }
+        }
+
+        loadQuestions().then(() => {
+            startQuiz();
+        });
+
+        function startQuiz() {
+            currentQuestionIndex = 0;
+            score1 = 0;
+            score2 = 0;
+            document.getElementById('result').classList.add('hidden');
+            updateScores();
+            showQuestion();
+        }
+
+        function showQuestion() {
+            if (currentQuestionIndex >= questions.length) {
+                return showResult();
+            }
+
+            const currentQuestion = questions[currentQuestionIndex];
+            document.getElementById('player1-question').innerText = currentQuestion.question;
+            document.getElementById('player2-question').innerText = currentQuestion.question;
+
+            document.getElementById('player1-options').innerHTML = '';
+            document.getElementById('player2-options').innerHTML = '';
+
+            currentQuestion.options.forEach(option => {
+                const button1 = document.createElement('button');
+                button1.innerText = option;
+                button1.onclick = () => selectAnswer(1, option);
+                document.getElementById('player1-options').appendChild(button1);
+
+                const button2 = document.createElement('button');
+                button2.innerText = option;
+                button2.onclick = () => selectAnswer(2, option);
+                document.getElementById('player2-options').appendChild(button2);
+            });
+
+            startTimer();
+        }
+
+        function selectAnswer(player, selected) {
+            clearInterval(timer);
+            const currentQuestion = questions[currentQuestionIndex];
+
+            if (selected === currentQuestion.answer) {
+                if (player === 1) {
+                    score1++;
+                } else {
+                    score2++;
+                }
+            }
+
+            updateScores();
+
+            currentQuestionIndex++;
+            if (currentQuestionIndex < questions.length) {
+                showQuestion();
+            } else {
+                showResult();
+            }
+        }
+
+        function updateScores() {
+            document.getElementById('score1').innerText = score1;
+            document.getElementById('score2').innerText = score2;
+        }
+
+        function startTimer() {
+            let timeLeft = timePerQuestion;
+            document.getElementById('timer').innerText = `Time left: ${timeLeft}s`;
+            timer = setInterval(() => {
+                timeLeft--;
+                document.getElementById('timer').innerText = `Time left: ${timeLeft}s`;
+                if (timeLeft <= 0) {
+                    clearInterval(timer);
+                    currentQuestionIndex++;
+                    if (currentQuestionIndex < questions.length) {
+                        showQuestion();
+                    } else {
+                        showResult();
+                    }
+                }
+            }, 1000);
+        }
+
+
+        function showResult() {
+            document.getElementById('player1-card').classList.add('hidden');
+            document.getElementById('player2-card').classList.add('hidden');
+            const resultSection = document.getElementById('result');
+            resultSection.classList.remove('hidden');
+            document.getElementById('final-score1').innerText = score1;
+            document.getElementById('final-score2').innerText = score2;
+        }
+
+        document.getElementById('restart-btn').onclick = startQuiz;
+    </script>
 </body>
 </html>
