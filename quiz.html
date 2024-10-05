@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz App</title>
+    <link rel="stylesheet" href="quiz.css">
+</head>
+<body>
+    <h1>QuizPy</h1>
+    <div class="container"></div>
+        <div class="player-card" id="player1-card">
+            <h2>Player 1</h2>
+            <div id="player1-question"></div>
+            <div id="timer"></div>
+            <div id="player1-options" class="options"></div>
+            <button id="player1-skip-btn">Skip</button>
+            <button id="player1-next-btn" class="hidden">Next Question</button>
+            <h3>Score: <span id="score1"></span></h3>
+        </div>
+
+        <div class="player-card" id="player2-card">
+            <h2>Player 2</h2>
+            <div id="player2-question"></div>
+            <div id="timer"></div>
+            <div id="player2-options" class="options"></div>
+            <button id="player2-skip-btn">Skip</button>
+            <button id="player2-next-btn" class="hidden">Next Question</button>
+            <h3>Score: <span id="score2"></span></h3>
+        </div>
+    </div>
+
+    <div id="result" class="hidden">
+        <h2>Results</h2>
+        <h3>Player 1 Score: <span id="final-score1"></span></h3>
+        <h3>Player 2 Score: <span id="final-score2"></span></h3>
+        <button id="restart-btn">Restart Quiz</button>
+    </div>
+    <script src="quiz.js"></script>
+</body>
+</html>

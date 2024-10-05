@@ -1,0 +1,240 @@
+[
+    {
+        "question": "What is the output of print(2 ** 3)?",
+        "options": ["8", "9", "6", "3"],
+        "answer": "8"
+    },
+    {
+        "question": "Which of the following is a mutable data type?",
+        "options": ["list", "tuple", "string", "int"],
+        "answer": "list"
+    },
+    {
+        "question": "What keyword is used to define a function in Python?",
+        "options": ["function", "def", "fun", "define"],
+        "answer": "def"
+    },
+    {
+        "question": "Which of the following will not create a variable?",
+        "options": ["x = 10", "10 = x", "x = 10.0", "x = 'hello'"],
+        "answer": "10 = x"
+    },
+    {
+        "question": "What is the output of print(type([]))?",
+        "options": ["<class 'list'>", "<class 'dict'>", "<class 'tuple'>", "<class 'set'>"],
+        "answer": "<class 'list'>"
+    },
+    {
+        "question": "Which of the following functions can be used to get the length of a list?",
+        "options": ["len()", "length()", "size()", "count()"],
+        "answer": "len()"
+    },
+    {
+        "question": "How do you start a comment in Python?",
+        "options": ["//", "#", "/*", "--"],
+        "answer": "#"
+    },
+    {
+        "question": "What is the output of print(10 % 3)?",
+        "options": ["1", "3", "0", "2"],
+        "answer": "1"
+    },
+    {
+        "question": "Which of the following is used to handle exceptions in Python?",
+        "options": ["try", "except", "catch", "finally"],
+        "answer": "except"
+    },
+    {
+        "question": "What will be the output of print(bool(0))?",
+        "options": ["True", "False", "None", "Error"],
+        "answer": "False"
+    },
+    {
+        "question": "Which operator is used for string concatenation?",
+        "options": ["&", "+", "||", "%"],
+        "answer": "+" 
+    },
+    {
+        "question": "What does the 'len' function return for an empty string?",
+        "options": ["0", "1", "None", "Error"],
+        "answer": "0"
+    },
+    {
+        "question": "How do you define a list in Python?",
+        "options": ["[]", "{}", "()", "<>"],
+        "answer": "[]"
+    },
+    {
+        "question": "Which method can be used to remove whitespace from both ends of a string?",
+        "options": ["strip()", "trim()", "remove()", "clean()"],
+        "answer": "strip()"
+    },
+    {
+        "question": "What will be the output of print('Hello' + 'World')?",
+        "options": ["Hello World", "HelloWorld", "Error", "Hello World!"],
+        "answer": "HelloWorld"
+    },
+    {
+        "question": "How do you start a for loop in Python?",
+        "options": ["for i in range", "for i in", "for each i in", "for i:"],
+        "answer": "for i in"
+    },
+    {
+        "question": "What is the correct syntax for defining a class?",
+        "options": ["class MyClass:", "MyClass class:", "def MyClass:", "class: MyClass"],
+        "answer": "class MyClass:"
+    },
+    {
+        "question": "What is the output of print('abc' * 2)?",
+        "options": ["abcabc", "abc", "2abc", "Error"],
+        "answer": "abcabc"
+    },
+    {
+        "question": "Which built-in module can be used to generate random numbers?",
+        "options": ["math", "random", "statistics", "numbers"],
+        "answer": "random"
+    },
+    {
+        "question": "What will be the output of print('hello'.capitalize())?",
+        "options": ["Hello", "hello", "HELLO", "Error"],
+        "answer": "Hello"
+    },
+    {
+        "question": "Which method is used to add an element at the end of a list?",
+        "options": ["add()", "append()", "insert()", "extend()"],
+        "answer": "append()"
+    },
+    
+    {
+        "question": "How can you create a dictionary in Python?",
+        "options": ["{}", "[]", "()", "<>"],
+        "answer": "{}"
+    },
+    {
+        "question": "Which method is used to sort a list in ascending order?",
+        "options": ["sort()", "order()", "arrange()", "organize()"],
+        "answer": "sort()"
+    },
+    {
+        "question": "What is the output of print('Hello'.lower())?",
+        "options": ["hello", "HELLO", "Hello", "Error"],
+        "answer": "hello"
+    },
+    {
+        "question": "Which of the following is not a valid variable name?",
+        "options": ["myVar", "my_var", "my-var", "myVar2"],
+        "answer": "my-var"
+    },
+    {
+        "question": "What does the 'in' keyword do?",
+        "options": ["Checks membership", "Creates a loop", "Defines a function", "Creates a condition"],
+        "answer": "Checks membership"
+    },
+    {
+        "question": "Which function is used to read input from the user?",
+        "options": ["input()", "get_input()", "read()", "scan()"],
+        "answer": "input()"
+    },
+    {
+        "question": "What is the output of print(type({}))?",
+        "options": ["<class 'dict'>", "<class 'set'>", "<class 'list'>", "<class 'tuple'>"],
+        "answer": "<class 'dict'>"
+    },
+    {
+        "question": "Which of the following is used to import a module?",
+        "options": ["include", "import", "require", "using"],
+        "answer": "import"
+    },
+    {
+        "question": "What will be the output of print('A' in 'ABC')?",
+        "options": ["True", "False", "None", "Error"],
+        "answer": "True"
+    },
+    {
+        "question": "Which of the following is used to define a lambda function?",
+        "options": ["def", "lambda", "func", "anonymous"],
+        "answer": "lambda"
+    },
+    {
+        "question": "How do you create a set in Python?",
+        "options": ["{}", "[]", "()", "<>"],
+        "answer": "{}"
+    },
+    {
+        "question": "What will be the output of print(3 * 'ha')?",
+        "options": ["ha ha ha", "hahaha", "ha3", "Error"],
+        "answer": "hahaha"
+    },
+    
+    {
+        "question": "Which function is used to convert a string to an integer?",
+        "options": ["int()", "str()", "float()", "convert()"],
+        "answer": "int()"
+    },
+    {
+        "question": "What will be the output of print('Hello' * 0)?",
+        "options": ["", "Hello", "Error", "None"],
+        "answer": ""
+    },
+    {
+        "question": "Which of the following can be used to iterate over a sequence?",
+        "options": ["for loop", "while loop", "if statement", "switch statement"],
+        "answer": "for loop"
+    },
+    {
+        "question": "What is the output of print('abc'.replace('b', 'd'))?",
+        "options": ["adc", "dabc", "abc", "Error"],
+        "answer": "adc"
+    },
+    
+    {
+        "question": "What is the output of print('A' + 'B' == 'AB')?",
+        "options": ["True", "False", "None", "Error"],
+        "answer": "True"
+    },
+    {
+        "question": "Which keyword is used to create a class in Python?",
+        "options": ["class", "def", "new", "object"],
+        "answer": "class"
+    },
+    {
+        "question": "What does the 'pass' statement do?",
+        "options": ["Terminates the program", "Does nothing", "Raises an error", "Exits a loop"],
+        "answer": "Does nothing"
+    },
+    {
+        "question": "Which operator is used to check equality?",
+        "options": ["==", "=", "===", "is"],
+        "answer": "=="
+    },
+    {
+        "question": "What is the output of print(5 // 2)?",
+        "options": ["2", "2.5", "3", "Error"],
+        "answer": "2"
+    },
+    {
+        "question": "What does the 'strip' method do to a string?",
+        "options": ["Removes all characters", "Removes whitespace", "Converts to uppercase", "Replaces characters"],
+        "answer": "Removes whitespace"
+    },
+    {
+        "question": "What will be the output of print('Python'[-1])?",
+        "options": ["n", "P", "Error", "o"],
+        "answer": "n"
+    },
+    {
+        "question": "Which of the following is not a built-in function in Python?",
+        "options": ["print()", "input()", "output()", "len()"],
+        "answer": "output()"
+    },
+    {
+        "question": "What is the output of print(1 == True)?",
+        "options": ["True", "False", "None", "Error"],
+        "answer": "True"
+    },
+    {
+        "question": "Which of the following keywords is used for defining an inline function?",
+        "options": ["def", "lambda", "function", "inline"],
+        "answer": "lambda"
+    }
+]

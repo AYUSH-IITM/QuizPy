@@ -1,0 +1,65 @@
+body {
+    font-family: Arial, sans-serif;
+    background: radial-gradient(circle, #8b000065, #6c2db8);
+    text-align: center;
+}
+
+.container {
+    max-width: 600px;
+    padding: 20px;
+    position: relative;
+}
+
+.player-card {
+    width: 90%;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 10px 0;
+    position: relative;
+    transform: perspective(1000px) rotateY(0deg);
+}
+
+#player2-card {
+    transform: perspective(1000px) rotate(180deg);
+}
+
+#progress-bar-container {
+    width: 100%;
+    background: #ddd;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+#progress-bar {
+    height: 10px;
+    background: #4caf50;
+    width: 0;
+    border-radius: 5px;
+}
+
+button {
+    margin-top: 10px;
+    border-radius: 40px;
+    margin-left: 10px;
+    border-color: white;
+}
+
+#skip-btn {
+    background-color: rgb(52, 89, 235);
+    color: white;
+    border: none;
+    width: 200px;
+    height: 30px;
+    border-radius: 40px;
+}
+
+#timer {
+    font-size: 20px;
+    color: red;
+}
+
+.hidden {
+    display: none;
+}
